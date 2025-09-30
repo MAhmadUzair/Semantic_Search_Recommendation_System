@@ -1,0 +1,75 @@
+2025-10-01 02:00:07,210 - backend.app.main - INFO - Starting up Semantic Ads Demo backend
+2025-10-01 02:00:07,212 - backend.app.main - INFO - Qdrant URL: 
+2025-10-01 02:00:07,212 - backend.app.main - INFO - Qdrant Collection: semantic_spots
+2025-10-01 02:00:07,212 - backend.app.main - INFO - Embedding Model: text-embedding-3-small
+2025-10-01 02:00:18,369 - backend.app.main - INFO - Shutting down Semantic Ads Demo backend
+2025-10-01 02:00:23,886 - backend.app.main - INFO - Starting up Semantic Ads Demo backend
+2025-10-01 02:00:23,886 - backend.app.main - INFO - Qdrant URL: 
+2025-10-01 02:00:23,887 - backend.app.main - INFO - Qdrant Collection: semantic_spots
+2025-10-01 02:00:23,887 - backend.app.main - INFO - Embedding Model: text-embedding-3-small
+2025-10-01 02:01:18,014 - backend.app.main - INFO - Shutting down Semantic Ads Demo backend
+2025-10-01 02:01:26,178 - backend.app.main - INFO - Starting up Semantic Ads Demo backend
+2025-10-01 02:01:26,179 - backend.app.main - INFO - Qdrant URL: 
+2025-10-01 02:01:26,179 - backend.app.main - INFO - Qdrant Collection: semantic_spots
+2025-10-01 02:01:26,179 - backend.app.main - INFO - Embedding Model: text-embedding-3-small
+2025-10-01 02:01:41,160 - backend.app.routers.search - INFO - Received search request: query='I want to advertise a football kit near stadiums', lat=None, lon=None, top_k=6
+2025-10-01 02:01:41,161 - backend.app.services.search_engine - INFO - Starting search for query: 'I want to advertise a football kit near stadiums', user_location=(None, None), top_k=6
+2025-10-01 02:01:41,162 - backend.app.services.search_engine - INFO - Step 1: Creating query embedding
+2025-10-01 02:01:41,163 - backend.app.services.embeddings - INFO - Creating embeddings for 1 texts using model 'text-embedding-3-small'
+2025-10-01 02:01:41,586 - openai - INFO - error_code=None error_message="You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys." error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2025-10-01 02:01:41,587 - backend.app.services.embeddings - ERROR - Failed to create embeddings: You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.
+2025-10-01 02:01:41,587 - backend.app.services.search_engine - ERROR - Search failed: You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.
+2025-10-01 02:01:41,588 - backend.app.routers.search - ERROR - Search request failed: You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.
+2025-10-01 02:03:21,860 - backend.app.main - INFO - Shutting down Semantic Ads Demo backend
+2025-10-01 02:03:48,234 - backend.app.main - INFO - Starting up Semantic Ads Demo backend
+2025-10-01 02:03:48,234 - backend.app.main - INFO - Qdrant URL: https://c4c60aaf-fc09-41db-9848-3cba7b505bd8.eu-central-1-0.aws.cloud.qdrant.io
+2025-10-01 02:03:48,235 - backend.app.main - INFO - Qdrant Collection: semantic_spots
+2025-10-01 02:03:48,235 - backend.app.main - INFO - Embedding Model: text-embedding-3-small
+2025-10-01 02:04:02,251 - backend.app.routers.search - INFO - Received search request: query='I want to advertise a football kit near stadiums', lat=None, lon=None, top_k=6
+2025-10-01 02:04:02,252 - backend.app.services.search_engine - INFO - Starting search for query: 'I want to advertise a football kit near stadiums', user_location=(None, None), top_k=6
+2025-10-01 02:04:02,252 - backend.app.services.search_engine - INFO - Step 1: Creating query embedding
+2025-10-01 02:04:02,252 - backend.app.services.embeddings - INFO - Creating embeddings for 1 texts using model 'text-embedding-3-small'
+2025-10-01 02:04:03,438 - backend.app.services.embeddings - INFO - Successfully created 1 embeddings with dimension 1536
+2025-10-01 02:04:03,438 - backend.app.services.search_engine - INFO - Query embedding created with dimension 1536
+2025-10-01 02:04:03,439 - backend.app.services.search_engine - INFO - Step 2: Searching vector database
+2025-10-01 02:04:03,439 - backend.app.services.vectordb - INFO - Searching vectors in collection 'semantic_spots' with top_k=6, vector_dim=1536
+2025-10-01 02:04:04,138 - httpx - INFO - HTTP Request: POST https://c4c60aaf-fc09-41db-9848-3cba7b505bd8.eu-central-1-0.aws.cloud.qdrant.io:6333/collections/semantic_spots/points/search "HTTP/1.1 200 OK"
+2025-10-01 02:04:04,143 - backend.app.services.vectordb - INFO - Qdrant search returned 6 results
+2025-10-01 02:04:04,143 - backend.app.services.vectordb - INFO - Processed 6 search results
+2025-10-01 02:04:04,144 - backend.app.services.search_engine - INFO - Vector search returned 6 results
+2025-10-01 02:04:04,144 - backend.app.services.search_engine - INFO - Step 3: Processing and scoring results
+2025-10-01 02:04:04,145 - backend.app.services.search_engine - INFO - Step 4: Final results - 6 spots sorted by final score
+2025-10-01 02:04:04,145 - backend.app.routers.search - INFO - Search engine returned 6 results
+2025-10-01 02:04:04,145 - backend.app.routers.search - INFO - Returning 6 search results
+2025-10-01 02:04:13,443 - backend.app.routers.search - INFO - Received search request: query='I want to advertise a football kit near stadiums', lat=None, lon=None, top_k=3
+2025-10-01 02:04:13,444 - backend.app.services.search_engine - INFO - Starting search for query: 'I want to advertise a football kit near stadiums', user_location=(None, None), top_k=3
+2025-10-01 02:04:13,444 - backend.app.services.search_engine - INFO - Step 1: Creating query embedding
+2025-10-01 02:04:13,444 - backend.app.services.embeddings - INFO - Creating embeddings for 1 texts using model 'text-embedding-3-small'
+2025-10-01 02:04:14,074 - backend.app.services.embeddings - INFO - Successfully created 1 embeddings with dimension 1536
+2025-10-01 02:04:14,074 - backend.app.services.search_engine - INFO - Query embedding created with dimension 1536
+2025-10-01 02:04:14,074 - backend.app.services.search_engine - INFO - Step 2: Searching vector database
+2025-10-01 02:04:14,075 - backend.app.services.vectordb - INFO - Searching vectors in collection 'semantic_spots' with top_k=3, vector_dim=1536
+2025-10-01 02:04:14,727 - httpx - INFO - HTTP Request: POST https://c4c60aaf-fc09-41db-9848-3cba7b505bd8.eu-central-1-0.aws.cloud.qdrant.io:6333/collections/semantic_spots/points/search "HTTP/1.1 200 OK"
+2025-10-01 02:04:14,728 - backend.app.services.vectordb - INFO - Qdrant search returned 3 results
+2025-10-01 02:04:14,728 - backend.app.services.vectordb - INFO - Processed 3 search results
+2025-10-01 02:04:14,729 - backend.app.services.search_engine - INFO - Vector search returned 3 results
+2025-10-01 02:04:14,729 - backend.app.services.search_engine - INFO - Step 3: Processing and scoring results
+2025-10-01 02:04:14,729 - backend.app.services.search_engine - INFO - Step 4: Final results - 3 spots sorted by final score
+2025-10-01 02:04:14,729 - backend.app.routers.search - INFO - Search engine returned 3 results
+2025-10-01 02:04:14,730 - backend.app.routers.search - INFO - Returning 3 search results
+2025-10-01 02:04:23,613 - backend.app.routers.search - INFO - Received search request: query='I want to advertise a football kit near stadiums', lat=None, lon=None, top_k=3
+2025-10-01 02:04:23,613 - backend.app.services.search_engine - INFO - Starting search for query: 'I want to advertise a football kit near stadiums', user_location=(None, None), top_k=3
+2025-10-01 02:04:23,614 - backend.app.services.search_engine - INFO - Step 1: Creating query embedding
+2025-10-01 02:04:23,614 - backend.app.services.embeddings - INFO - Creating embeddings for 1 texts using model 'text-embedding-3-small'
+2025-10-01 02:04:24,056 - backend.app.services.embeddings - INFO - Successfully created 1 embeddings with dimension 1536
+2025-10-01 02:04:24,057 - backend.app.services.search_engine - INFO - Query embedding created with dimension 1536
+2025-10-01 02:04:24,057 - backend.app.services.search_engine - INFO - Step 2: Searching vector database
+2025-10-01 02:04:24,057 - backend.app.services.vectordb - INFO - Searching vectors in collection 'semantic_spots' with top_k=3, vector_dim=1536
+2025-10-01 02:04:24,701 - httpx - INFO - HTTP Request: POST https://c4c60aaf-fc09-41db-9848-3cba7b505bd8.eu-central-1-0.aws.cloud.qdrant.io:6333/collections/semantic_spots/points/search "HTTP/1.1 200 OK"
+2025-10-01 02:04:24,702 - backend.app.services.vectordb - INFO - Qdrant search returned 3 results
+2025-10-01 02:04:24,702 - backend.app.services.vectordb - INFO - Processed 3 search results
+2025-10-01 02:04:24,702 - backend.app.services.search_engine - INFO - Vector search returned 3 results
+2025-10-01 02:04:24,703 - backend.app.services.search_engine - INFO - Step 3: Processing and scoring results
+2025-10-01 02:04:24,703 - backend.app.services.search_engine - INFO - Step 4: Final results - 3 spots sorted by final score
+2025-10-01 02:04:24,703 - backend.app.routers.search - INFO - Search engine returned 3 results
+2025-10-01 02:04:24,703 - backend.app.routers.search - INFO - Returning 3 search results

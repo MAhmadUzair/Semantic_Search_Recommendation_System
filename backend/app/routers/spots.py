@@ -6,15 +6,23 @@ from ..services.vectordb import upsert_spot, ensure_collection
 import uuid
 from ..config import settings
 from typing import Dict
+import logging
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/spots", tags=["spots"])
 
-# Ensure Qdrant collection exists on import
-ensure_collection(collection_name=settings.QDRANT_COLLECTION, vector_size=1536)
+# Collection will be ensured when first needed
 
 
 @router.post("/", response_model=SpotResponse)
 def create_spot(payload: SpotCreate):
+    # Ensure collection exists before creating spot
+    try:
+        ensure_collection(collection_name=settings.QDRANT_COLLECTION, vector_size=1536)
+    except Exception as e:
+        logger.error(f"Failed to ensure collection: {e}")
+        raise HTTPException(status_code=500, detail=f"Database connection failed: {str(e)}")
+    
     # generate id, compute embedding, upsert into qdrant with metadata
     spot_id = str(uuid.uuid4())
     full_text = f"{payload.title} {payload.description or ''} {' '.join(payload.category_tags or [])}"

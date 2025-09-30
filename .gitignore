@@ -1,3 +1,16 @@
-.idea/
-.venv
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+
+# Ignore environment files
 .env
+.env.*
+
+.idea/
+
+
+comands.txt

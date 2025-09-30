@@ -1,7 +1,5 @@
-# backend/app/models/spots.py
 from pydantic import BaseModel, Field
 from typing import Optional, List
-from datetime import date
 
 
 class SpotCreate(BaseModel):
@@ -13,7 +11,7 @@ class SpotCreate(BaseModel):
     lon: float
     width_cm: Optional[int] = None
     height_cm: Optional[int] = None
-    availability: Optional[dict] = Field(default_factory=dict)  # simple calendar or JSON
+    availability: Optional[dict] = Field(default_factory=dict)
 
 class SpotInDB(SpotCreate):
     id: str

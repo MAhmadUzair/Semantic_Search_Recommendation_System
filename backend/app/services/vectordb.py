@@ -1,9 +1,7 @@
-# backend/app/services/vectordb.py
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 from typing import Optional, List, Dict, Any
 from ..config import settings
-import uuid
 import logging
 
 logger = logging.getLogger(__name__)

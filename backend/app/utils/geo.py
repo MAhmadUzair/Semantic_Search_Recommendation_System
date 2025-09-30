@@ -1,13 +1,11 @@
-# backend/app/utils/geo.py
 import math
-from typing import Tuple
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """
     Returns distance in kilometers between two lat/lon points.
     """
-    R = 6371.0  # Earth radius in km
+    R = 6371.0
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)
     dphi = math.radians(lat2 - lat1)

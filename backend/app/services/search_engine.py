@@ -1,4 +1,3 @@
-# backend/app/services/search_engine.py
 from typing import List, Dict, Any
 from ..services.embeddings import embed_text
 from ..services.vectordb import search_vectors
@@ -26,20 +25,17 @@ def search_spots(
     logger.info(f"Starting search for query: '{query}', user_location=({user_lat}, {user_lon}), top_k={top_k}")
     
     try:
-        # 1. embed
         logger.info("Step 1: Creating query embedding")
         q_emb = embed_text([query], model=settings.EMBEDDING_MODEL)[0]
         logger.info(f"Query embedding created with dimension {len(q_emb)}")
 
-        # 2. vector search (returns payloads containing spot metadata incl lat/lon)
         logger.info("Step 2: Searching vector database")
         vec_results = search_vectors(query_vector=q_emb, top_k=top_k)
         logger.info(f"Vector search returned {len(vec_results)} results")
 
         processed = []
-        # For traffic normalization choose a simple expected range
         TRAFFIC_MIN = 0.0
-        TRAFFIC_MAX = 10000.0  # demo scale (impressions/day)
+        TRAFFIC_MAX = 10000.0
 
         logger.info("Step 3: Processing and scoring results")
         for i, r in enumerate(vec_results):
@@ -81,7 +77,6 @@ def search_spots(
                 }
             )
 
-        # sort by final_score desc
         processed = sorted(processed, key=lambda x: x["final_score"], reverse=True)
         logger.info(f"Step 4: Final results - {len(processed)} spots sorted by final score")
         logger.debug(f"Top 3 final scores: {[p['final_score'] for p in processed[:3]]}")

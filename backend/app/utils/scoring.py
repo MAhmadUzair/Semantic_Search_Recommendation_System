@@ -1,4 +1,3 @@
-# backend/app/utils/scoring.py
 from typing import Optional
 import math
 
@@ -14,9 +13,7 @@ def geo_score(distance_km: float, sigma: float = 5.0) -> float:
 def normalize(value: Optional[float], min_v=0.0, max_v=1.0) -> float:
     if value is None:
         return 0.0
-    # clamp and normalize between min_v and max_v (assumed traffic_estimates prebounded)
     val = max(min_v, min(max_v, float(value)))
-    # map min_v..max_v -> 0..1
     if max_v - min_v == 0:
         return 0.0
     return (val - min_v) / (max_v - min_v)

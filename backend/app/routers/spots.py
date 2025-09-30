@@ -1,4 +1,3 @@
-# backend/app/routers/spots.py
 from fastapi import APIRouter, HTTPException
 from ..models.spots import SpotCreate, SpotResponse
 from ..services.embeddings import embed_text
@@ -11,7 +10,6 @@ import logging
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/spots", tags=["spots"])
 
-# Collection will be ensured when first needed
 
 
 @router.post("/", response_model=SpotResponse)
@@ -23,7 +21,6 @@ def create_spot(payload: SpotCreate):
         logger.error(f"Failed to ensure collection: {e}")
         raise HTTPException(status_code=500, detail=f"Database connection failed: {str(e)}")
     
-    # generate id, compute embedding, upsert into qdrant with metadata
     spot_id = str(uuid.uuid4())
     full_text = f"{payload.title} {payload.description or ''} {' '.join(payload.category_tags or [])}"
     embedding = embed_text([full_text], model=settings.EMBEDDING_MODEL)[0]
@@ -33,7 +30,6 @@ def create_spot(payload: SpotCreate):
         "category_tags": payload.category_tags,
         "lat": payload.lat,
         "lon": payload.lon,
-        # Precomputed traffic is optional; for demo we set None or 0
         "precomputed_traffic": 0.0,
         "traffic_confidence": "low",
     }

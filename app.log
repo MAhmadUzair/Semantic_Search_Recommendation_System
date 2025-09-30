@@ -73,3 +73,13 @@
 2025-10-01 02:04:24,703 - backend.app.services.search_engine - INFO - Step 4: Final results - 3 spots sorted by final score
 2025-10-01 02:04:24,703 - backend.app.routers.search - INFO - Search engine returned 3 results
 2025-10-01 02:04:24,703 - backend.app.routers.search - INFO - Returning 3 search results
+2025-10-01 02:13:05,900 - backend.app.main - INFO - Shutting down Semantic Ads Demo backend
+2025-10-01 02:13:09,291 - backend.app.main - INFO - Starting up Semantic Ads Demo backend
+2025-10-01 02:13:09,291 - backend.app.main - INFO - Qdrant URL: https://c4c60aaf-fc09-41db-9848-3cba7b505bd8.eu-central-1-0.aws.cloud.qdrant.io
+2025-10-01 02:13:09,291 - backend.app.main - INFO - Qdrant Collection: semantic_spots
+2025-10-01 02:13:09,292 - backend.app.main - INFO - Embedding Model: text-embedding-3-small
+2025-10-01 02:13:44,986 - backend.app.main - INFO - Shutting down Semantic Ads Demo backend
+2025-10-01 02:13:48,972 - backend.app.main - INFO - Starting up Semantic Ads Demo backend
+2025-10-01 02:13:48,972 - backend.app.main - INFO - Qdrant URL: https://c4c60aaf-fc09-41db-9848-3cba7b505bd8.eu-central-1-0.aws.cloud.qdrant.io
+2025-10-01 02:13:48,973 - backend.app.main - INFO - Qdrant Collection: semantic_spots
+2025-10-01 02:13:48,973 - backend.app.main - INFO - Embedding Model: text-embedding-3-small

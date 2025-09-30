@@ -1,17 +1,9 @@
-#!/usr/bin/env python3
-"""
-Test script to verify logging is working correctly.
-This script tests the logging functionality without requiring external services.
-"""
-
 import sys
 import os
 import logging
 
-# Add the backend directory to the Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -25,7 +17,6 @@ def test_logging():
     logger.warning("This is a warning message")
     logger.error("This is an error message")
     
-    # Test logging from different modules
     try:
         from app.services.vectordb import logger as vectordb_logger
         vectordb_logger.info("VectorDB logger test")

@@ -1,4 +1,3 @@
-# backend/app/services/embeddings.py
 import os
 from typing import List
 import openai

@@ -1,31 +1,21 @@
-#!/usr/bin/env python3
-"""
-Script to populate the Qdrant database with sample advertising spots data.
-Run this script to add sample data for testing the semantic search functionality.
-"""
-
 import sys
 import os
 import logging
 from typing import List, Dict, Any
 import uuid
 
-# Add the backend directory to the Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from app.services.vectordb import ensure_collection, upsert_spot
 from app.services.embeddings import embed_text
 from app.config import settings
-import os
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-# Sample advertising spots data
 SAMPLE_SPOTS = [
     {
         "id": "stadium_1",
@@ -153,11 +143,9 @@ def create_spot_embeddings(spots: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """Create embeddings for spot descriptions and titles."""
     logger.info(f"Creating embeddings for {len(spots)} spots")
     
-    # Prepare texts for embedding (combine title and description)
     texts = []
     for spot in spots:
         text = f"{spot['title']} {spot['description']}"
-        # Add category tags to the text for better semantic matching
         if spot.get('category_tags'):
             text += " " + " ".join(spot['category_tags'])
         texts.append(text)
@@ -166,7 +154,6 @@ def create_spot_embeddings(spots: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         embeddings = embed_text(texts, model=settings.EMBEDDING_MODEL)
         logger.info(f"Successfully created {len(embeddings)} embeddings")
         
-        # Combine spots with their embeddings
         spots_with_embeddings = []
         for i, spot in enumerate(spots):
             spot_with_embedding = spot.copy()
@@ -182,7 +169,6 @@ def populate_database():
     """Main function to populate the database with sample data."""
     logger.info("Starting database population")
     
-    # Validate required environment variables
     try:
         settings.validate_required_fields()
     except ValueError as e:
@@ -195,21 +181,16 @@ def populate_database():
         return False
     
     try:
-        # Ensure collection exists
         logger.info("Ensuring collection exists")
-        ensure_collection(vector_size=1536)  # OpenAI text-embedding-3-small has 1536 dimensions
+        ensure_collection(vector_size=1536)
         
-        # Create embeddings for all spots
         spots_with_embeddings = create_spot_embeddings(SAMPLE_SPOTS)
         
-        # Insert spots into Qdrant
         logger.info("Inserting spots into Qdrant")
         for spot in spots_with_embeddings:
             try:
-                # Convert string ID to UUID for Qdrant compatibility
                 spot_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, spot['id']))
                 
-                # Prepare metadata (everything except embedding)
                 metadata = {k: v for k, v in spot.items() if k not in ['embedding']}
                 
                 upsert_spot(

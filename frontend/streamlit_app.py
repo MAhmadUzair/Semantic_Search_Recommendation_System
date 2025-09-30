@@ -1,7 +1,5 @@
-# frontend/streamlit_app.py
 import streamlit as st
 import httpx
-from typing import Optional
 
 BACKEND_URL = "http://localhost:8000"
 

@@ -1,4 +1,3 @@
-# backend/app/routers/search.py
 from fastapi import APIRouter, HTTPException
 from ..models.search import SearchRequest, SearchResponse, SearchResultItem
 from ..services.search_engine import search_spots

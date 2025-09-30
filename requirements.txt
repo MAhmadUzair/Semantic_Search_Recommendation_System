@@ -11,7 +11,7 @@ qdrant-client==1.12.1
 
 # Utils
 numpy==2.1.1
-scikit-learn==1.5.1
+scikit-learn
 
 # Frontend
 streamlit==1.38.0
